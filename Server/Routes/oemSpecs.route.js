@@ -45,6 +45,21 @@ oemSpecRouter.post("/specs", async (req, res) => {
       res.status(500).json({ message: "Error retrieving OEM specifications" });
     }
   });
+  oemSpecRouter.get("/specs", async (req, res) => {
+    try {
+      // const availableOEMs = await OEMSpecs.find({});
+      let search = req.query.modelName;
+      // regex -- { name: { $regex: `.*${searchTerm}.*`, $options: 'i' } };
+      let availableOEMs = await OEMSpecs.find({
+        modelName: { $regex: `.*${search}.*`, $options: "i" },
+      });
+
+      res.json({ message: "All available OEMs", availableOEMs });
+    } catch (error) {
+      console.error("Error retrieving OEM specifications:", error);
+      res.status(500).json({ message: "Error retrieving OEM specifications" });
+    }
+  });
 
   module.exports = {
     oemSpecRouter

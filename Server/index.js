@@ -79,6 +79,7 @@ app.post("/upload", authenticator, upload.single("image"), async (req, res) => {
     res.send({ msg: "success uploaded", saved, result });
   });
 });
+
 app.delete("/vehicle/:id",async(req,res)=>{
     try {
       let find = await MarketplaceInventory.findByIdAndDelete({_id:req.params.id});
@@ -87,6 +88,15 @@ app.delete("/vehicle/:id",async(req,res)=>{
       res.send({ msg: "error deleting"});
       console.log(error);
     }
+})
+app.get("/vehicle",async(req,res)=>{
+  try {
+    const vehicle = await MarketplaceInventory.find({});
+    res.send({msg:"All vehicle ",data:vehicle})
+  } catch (error) {
+    console.log(error);
+    res.send({ msg: error.message })
+  }
 })
 app.patch("/vehicle/:id",async(req,res)=>{
     try {
