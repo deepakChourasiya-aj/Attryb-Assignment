@@ -54,7 +54,7 @@ userRoute.post("/register", async (req, res) => {
               msg: "Login successful",
               name: findUser.name,
               role: findUser.role,
-              token,
+              token
             });
           }
         }
