@@ -4,33 +4,17 @@ const { connection } = require("./Configuration/db");
 const { User } = require("./Models/user.model");
 const PORT = process.env.port || 9000;
 const bcrypt = require("bcrypt");
+const jwt =require("jsonwebtoken");
+const cookieParser = require("cookie-parser");
+const { userRoute } = require("./Routes/user.route");
 const app = express();
 app.use(express.json());
-
+app.use(cookieParser());
 app.get("/", (req, res) => {
-  res.send({ msg: "connection" });
+  res.send({ msg: "Welcome to buyCars" });
 });
 
-app.post("/register", async (req, res) => {
-    const { name, email, password, role } = req.body;
-    try {
-      // Input validation - check that name, email, and password are present in the request body
-      if (!name || !email || !password) {
-        return res
-          .status(400)
-          .json({ message: "Name, email, and password are required." });
-      }
-      // Hash the user's password
-      const hashedPassword = await bcrypt.hash(password, 5);
-      // Create a new user
-      const user = new User({ name, email, password: hashedPassword, role });
-      const newUser = await user.save();
-      res.status(200).send({ message: "Account created successfully", newUser });
-    } catch (error) {
-      console.error("Error in registering", error);
-      return res.status(500).json({ message: "Server error" });
-    }
-  });
+app.use("/",userRoute);
 app.listen(PORT, async () => {
   try {
     await connection;
