@@ -23,7 +23,7 @@ BuyCars is a system designed to streamline the process of selling used cars for 
 
 **Server side:** Render cloud https://abbtrybackend.onrender.com
 
-**Client side:** Vercel https://buycar-snowy.vercel.app/
+**Client side:** Vercel https://buycar-snowy.vercel.app/signup
 
 Note - Sorry due to time constraint frontend is not build perfectly,but i will improve it further.
 
