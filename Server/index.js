@@ -8,6 +8,7 @@ const { oemSpecRouter } = require("./Routes/oemSpecs.route");
 const cors = require("cors");
 const { authenticator } = require("./Middlewares/authenticator");
 const { vehicleRouter } = require("./Routes/vehicle.route");
+const { accessRouter } = require("./Routes/access.route");
 const app = express();
 
 app.use(cors()); // Enable Cross-Origin Resource Sharing
@@ -20,6 +21,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes
+app.use("/",accessRouter) // Route for general access
 app.use("/", oemSpecRouter); // Route for OEM specifications
 app.use("/", userRoute); // Route for user-related functionality
 app.use(authenticator); // Middleware for authentication

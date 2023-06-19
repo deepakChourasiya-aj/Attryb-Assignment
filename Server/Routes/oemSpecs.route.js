@@ -46,9 +46,7 @@ oemSpecRouter.get("/specs", async (req, res) => {
 });
 oemSpecRouter.get("/specs", async (req, res) => {
   try {
-    // const availableOEMs = await OEMSpecs.find({});
     let search = req.query.modelName;
-    // regex -- { name: { $regex: `.*${searchTerm}.*`, $options: 'i' } };
     let availableOEMs = await OEMSpecs.find({
       modelName: { $regex: `.*${search}.*`, $options: "i" },
     });

@@ -24,6 +24,8 @@ vehicleRouter.post(
         const findSpecification = await OEMSpecs.findOne({
           modelName: req.body.modelName,
         });
+        console.log(findSpecification);
+
         const {
           yearOfModel,
           listPrice,
@@ -87,19 +89,6 @@ vehicleRouter.delete("/vehicle/:id", async (req, res) => {
     console.log(error);
   }
 });
-// vehicleRouter.get("/vehicle", async (req, res) => {
-//   try {
-//     const token = req.headers.authorization || req.cookies.token;
-//     let decoded = jwt.verify(token, process.env.JWT_SECRET);
-//     const vehicle = await MarketplaceInventory.find({
-//       dealerId: decoded.userID,
-//     });
-//     res.send({ msg: "All vehicle ", data: vehicle });
-//   } catch (error) {
-//     console.log(error);
-//     res.send({ msg: error.message });
-//   }
-// });
 
 // o Create filters on Price, Colors, and Mileage.
 vehicleRouter.get("/vehicle", async (req, res) => {
@@ -109,10 +98,10 @@ vehicleRouter.get("/vehicle", async (req, res) => {
     let order = req.query;
     if (order.sort == "asc") {
       let vehicle = await MarketplaceInventory.find().sort({ listPrice: 1 });
-      return res.status(200).json({ msg: "products asc", data: vehicle });
+      return res.status(200).json({ msg: "products asc order", data: vehicle });
     } else if (order.sort == "desc") {
       let vehicle = await MarketplaceInventory.find().sort({ listPrice: -1 });
-      return res.status(200).json({ msg: "vehicle asc", data: vehicle });
+      return res.status(200).json({ msg: "vehicle desc order", data: vehicle });
     } else if (order.mileage) {
       let vehicle = await MarketplaceInventory.find({
         mileage: parseInt(order.mileage),
@@ -139,6 +128,17 @@ vehicleRouter.get("/vehicle", async (req, res) => {
     res.send({ msg: error.message });
   }
 });
+
+vehicleRouter.get("/vehicle/all", async (req, res) => {
+  try {
+    const vehicle = await MarketplaceInventory.find({});
+    res.send({ msg: "All vehicle", data: vehicle });
+  } catch (error) {
+    console.log(error);
+    res.send({ msg: error.message });
+  }
+});
+
 vehicleRouter.get("/vehicle/:id", async (req, res) => {
   try {
     const vehicle = await MarketplaceInventory.find({ _id: req.params.id });
@@ -148,6 +148,7 @@ vehicleRouter.get("/vehicle/:id", async (req, res) => {
     res.send({ msg: error.message });
   }
 });
+
 vehicleRouter.patch("/vehicle/:id", async (req, res) => {
   try {
     let find = await MarketplaceInventory.findByIdAndUpdate(
