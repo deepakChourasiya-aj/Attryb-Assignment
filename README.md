@@ -32,7 +32,7 @@ Note - Sorry due to time constraint frontend is not build perfectly,but i will i
 -  Authentication
 -  API Validation
 -  Signup/Login
--  Dealer can list old cars and OEM specification autometically will fetched for the model of the car 
+-  Dealer can list old cars and OEM specification autometically will fetched for the model of the car,only authenticated person can be able to do operation
 -  Original equipment manufacturer can set the OEM specification
 -  Serach,Filter,Sort
 
