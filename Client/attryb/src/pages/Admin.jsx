@@ -3,19 +3,56 @@ import React, { useEffect, useState } from "react";
 
 const Admin = () => {
   const [data, setData] = useState([]);
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: JSON.parse(localStorage.getItem("token")),
+  };
   useEffect(async () => {
     try {
-      const url = `http://localhost:8080/vehicle`;
-      const response = await axios.get(url);
+      const url = `https://abbtrybackend.onrender.com/vehicle`;
+      const response = await axios.get(url, { headers });
       console.log(response.data.data);
       setData(response.data.data);
     } catch (error) {
       console.log(error);
     }
   }, []);
-  console.log(data);
+
+  const hanldeDelete = async (id) => {
+    let url = `https://abbtrybackend.onrender.com/vehicle/${id}`;
+    let response = await axios.delete(url, { headers });
+    if (response.status === 200) {
+      alert("Vehicle deleted successfully");
+    }
+    console.log(response);
+  };
+
+  const handleEditClick = async (id) => {
+    const res = await axios.get(`https://abbtrybackend.onrender.com/vehicle/${id}`, {
+      headers,
+    });
+    const title = prompt("Enter new title:");
+    const registrationPlace = prompt("Enter new registrationPlace :");
+    const listPrice = prompt("Enter new listPrice :");
+    const maxSpeed = prompt("Enter new maxSpeed :");
+    const description = prompt("Enter new description :");
+    const car = {
+      title,
+      registrationPlace,
+      listPrice,
+      maxSpeed,
+      description,
+    };
+    const update = await axios.patch(
+      `https://abbtrybackend.onrender.com/vehicle/${id}`,
+      car,
+      { headers }
+    );
+  };
 
   return (
+    <>
+        <h1>Welcome Dealers </h1>
     <div
       style={{
         display: "grid",
@@ -80,11 +117,29 @@ const Admin = () => {
               <div>
                 <strong>Dealer ID:</strong> {carData.dealerId}
               </div>
+              <div>
+                <button
+                  onClick={() => {
+                    hanldeDelete(carData._id);
+                  }}
+                >
+                  Delete
+                </button>
+                <button
+                  onClick={() => {
+                    handleEditClick(carData._id);
+                  }}
+                >
+                  Edit
+                </button>
+              </div>
             </div>
           </div>
         </div>
+        
       ))}
     </div>
+    </>
   );
 };
 const cardStyles = {
