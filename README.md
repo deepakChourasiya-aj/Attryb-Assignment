@@ -25,8 +25,6 @@ BuyCars is a system designed to streamline the process of selling used cars for 
 
 **Client side:** Vercel https://buycar-snowy.vercel.app/signup
 
-Note - Sorry due to time constraint frontend is not build perfectly,but i will improve it further.
-
 ## Features 
 -  Cloudinary Image store
 -  Authentication
@@ -173,4 +171,5 @@ PATCH  http://localhost:8080/vehicle
  
  [@deepakChourasiya-aj](https://github.com/deepakChourasiya-aj) 
  
- 
+ Note -  Due to time constraint frontend is not build perfectly,but i will improve it further.
+
