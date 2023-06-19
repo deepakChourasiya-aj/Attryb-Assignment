@@ -106,9 +106,6 @@ const Cars = () => {
                   <strong>Major Scratches:</strong>{" "}
                   {carData.majorScratches ? "Yes" : "No"}
                 </div>
-                <div>
-                  <strong>Dealer ID:</strong> {carData.dealerId}
-                </div>
               </div>
             </div>
           </div>
@@ -119,6 +116,7 @@ const Cars = () => {
 };
 const filterStyle = {
   padding: "10px",
+  marginBottom: "10px",
 };
 const cardStyles = {
   display: "flex",
@@ -130,6 +128,8 @@ const cardStyles = {
   padding: "20px",
   backgroundColor: "#fff",
   boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  textAlign:"left",
+  fontWeight:"400"
 };
 
 const imageStyles = {
