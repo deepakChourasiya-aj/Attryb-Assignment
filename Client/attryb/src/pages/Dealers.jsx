@@ -66,7 +66,9 @@ const Dealers = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <div style={{ maxWidth: '500px', margin: '0 auto' }}>
+        <h1>Add New Car</h1>
+        <form  style={{ display: 'flex', flexDirection: 'column',padding:"5px" ,border:"3px solid yellow"}} onSubmit={handleSubmit}>
       <label>
         Image:
         <input type="file" name="image" onChange={handleChange} />
@@ -74,6 +76,7 @@ const Dealers = () => {
       <br />
       <label>
         Title:
+      </label>
         <input
           type="text"
           name="title"
@@ -81,10 +84,10 @@ const Dealers = () => {
           onChange={handleChange}
           placeholder="Enter the title"
         />
-      </label>
       <br />
       <label>
         Model Name:
+      </label>
         <input
           type="text"
           name="modelName"
@@ -92,20 +95,20 @@ const Dealers = () => {
           onChange={handleChange}
           placeholder="Enter the model name"
         />
-      </label>
       <br />
       <label>
         Description:
+      </label>
         <textarea
           name="description"
           value={carData.description}
           onChange={handleChange}
           placeholder="Enter the description"
         />
-      </label>
       <br />
       <label>
         KMs on Odometer:
+      </label>
         <input
           type="number"
           name="kmsOnOdometer"
@@ -113,30 +116,30 @@ const Dealers = () => {
           onChange={handleChange}
           placeholder="Enter the kilometers on odometer"
         />
-      </label>
       <br />
       <label>
         Major Scratches:
+      </label>
         <input
           type="checkbox"
           name="majorScratches"
           checked={carData.majorScratches}
           onChange={handleChange}
         />
-      </label>
       <br />
       <label>
         Original Paint:
+      </label>
         <input
           type="checkbox"
           name="originalPaint"
           checked={carData.originalPaint}
           onChange={handleChange}
         />
-      </label>
       <br />
       <label>
         Number of Accidents Reported:
+      </label>
         <input
           type="number"
           name="numAccidentsReported"
@@ -144,10 +147,10 @@ const Dealers = () => {
           onChange={handleChange}
           placeholder="Enter the number of accidents reported"
         />
-      </label>
       <br />
       <label>
         Number of Previous Buyers:
+      </label>
         <input
           type="number"
           name="numPreviousBuyers"
@@ -155,10 +158,10 @@ const Dealers = () => {
           onChange={handleChange}
           placeholder="Enter the number of previous buyers"
         />
-      </label>
       <br />
       <label>
         Registration Place:
+      </label>
         <input
           type="text"
           name="registrationPlace"
@@ -166,10 +169,16 @@ const Dealers = () => {
           onChange={handleChange}
           placeholder="Enter the registration place"
         />
-      </label>
       <br />
-      <button type="submit">Submit</button>
+      <button  style={{
+            padding: '5px',
+            backgroundColor: '#007bff',
+            color: '#fff',
+            border: 'none',
+            cursor: 'pointer',
+          }} type="submit">Submit</button>
     </form>
+    </div>
   );
 };
 

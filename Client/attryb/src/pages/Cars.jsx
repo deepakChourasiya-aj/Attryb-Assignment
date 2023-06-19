@@ -44,7 +44,7 @@ const Cars = () => {
           gridTemplateColumns: "repeat(3,1fr)",
           gap: "20px",
           margin: "auto",
-          textAlign: "center",
+          placeItems: "center",
         }}
       >
         {data.map((carData) => (
