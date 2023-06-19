@@ -32,7 +32,7 @@ BuyCars is a system designed to streamline the process of selling used cars for 
 -  Signup/Login
 -  Dealer can list old cars and OEM specification autometically will fetched for the model of the car,only authenticated person can be able to do operation
 -  Original equipment manufacturer can set the OEM specification
--  Serach,Filter,Sort
+-  Search,Filter,Sort
 
 ## Run Locally
 
