@@ -115,14 +115,14 @@ vehicleRouter.get("/vehicle", async (req, res) => {
       return res.status(200).json({ msg: "vehicle asc", data: vehicle });
     } else if (order.mileage) {
       let vehicle = await MarketplaceInventory.find({
-        mileage: parseInt(order.mileage)
+        mileage: parseInt(order.mileage),
       });
       return res
         .status(200)
         .json({ msg: "vehicle according to sorted order", data: vehicle });
     } else if (order.color) {
       let vehicle = await MarketplaceInventory.find({
-        availableColors: order.color
+        availableColors: order.color,
       });
       return res
         .status(200)
@@ -130,7 +130,7 @@ vehicleRouter.get("/vehicle", async (req, res) => {
     }
     console.log(decoded.userID);
     const vehicle = await MarketplaceInventory.find({
-        dealerId: decoded.userID
+      dealerId: decoded.userID,
     });
     // const vehicle = await MarketplaceInventory.find({});
     res.send({ msg: "All vehicle", data: vehicle });
