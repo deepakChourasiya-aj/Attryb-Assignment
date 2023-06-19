@@ -29,11 +29,13 @@ BuyCars is a system designed to streamline the process of selling used cars for 
 -  Serach,Filter,Sort
 
 ## Run Locally
+
 ### Clone this Project
 
 ```
-https://github.com/faraz412/cozy-passenger-4798.git
+https://github.com/deepakChourasiya-aj/Attryb-Assignment.git
 ```
+
 
 ### Install npm Packages
 
